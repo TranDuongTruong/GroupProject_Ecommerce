@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GroupProject_Ecommerce.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <link href="Content/css/SiteMaster.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+        <nav class="navbar">
+            <div class="container">
+                
+                <div class="header" style="width:100%"> 
+                    <a class="navbar-brand" runat="server" href="~/" style="width:20%">E-Commerce</a>
+                    <ul class="navbar-nav"style="width:30%">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">CONTACT</a></li>
+                    </ul >
+                    <div class="search-container"style="width:30%">
+                        <asp:TextBox ID="SearchTextBox" CssClass="search-box" runat="server" placeholder="Search..."></asp:TextBox>
+                        <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-outline-light" OnClick="SearchButton_Click" />
+                    </div>
+                    <ul class="navbar-nav" style="width:20%">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Cart">Shopping Cart</a></li>
+                        <li id="LoginIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/LoginAndRegister">Login</a></li>
+                        <li id="LogoutIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My E-Commerce Application</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
