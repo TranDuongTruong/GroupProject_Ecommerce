@@ -166,7 +166,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".env" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="Site.Mobile.Master" />
