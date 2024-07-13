@@ -136,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\DBContext.cs" />
     <Compile Include="Scripts\UserContext.cs" />
+    <Compile Include="Scripts\Models\UserViewModel.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,7 +180,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Images\Icon\" />
+    <Folder Include="Content\Images\ProductImages\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
