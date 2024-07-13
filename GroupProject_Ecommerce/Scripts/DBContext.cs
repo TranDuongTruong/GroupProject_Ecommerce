@@ -17,8 +17,8 @@ namespace GroupProject_Ecommerce.Scripts
         // Method to open the database connection
         private void OpenConnection()
         {
-        //    string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Study\KTTMDT\Lap_KTTMDT\GroupProject_Ecommerce\GroupProject_Ecommerce\App_Data\Database.mdf;Integrated Security=True";
-            string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\GroupProject_Ecommerce\GroupProject_Ecommerce\App_Data\Database.mdf;Integrated Security=True";
+            /*            string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");*/
             cn = new SqlConnection(connectionString);
             cn.Open();
         }
