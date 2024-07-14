@@ -15,6 +15,7 @@ namespace GroupProject_Ecommerce.Scripts.Models
         public string Address { get; set; }
         public string DisplayName { get; set; }
         public string Avatar { get; set; }
+        public int Gender { get; set; }
 
 
     }

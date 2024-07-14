@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Reflection;
 
 namespace GroupProject_Ecommerce.Scripts
 {
@@ -109,6 +110,42 @@ namespace GroupProject_Ecommerce.Scripts
                 CloseConnection();
             }
             return result;
+        }
+
+
+        public T GetObjectByQuery<T>(string sql) where T : new()
+        {
+            T obj = new T();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand(sql, cn);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        foreach (PropertyInfo property in typeof(T).GetProperties())
+                        {
+                            if (!reader.IsDBNull(reader.GetOrdinal(property.Name)))
+                            {
+                                property.SetValue(obj, reader[property.Name]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (optional)
+                obj = default(T);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return obj;
         }
     }
 }

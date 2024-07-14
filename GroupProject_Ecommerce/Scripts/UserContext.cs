@@ -20,5 +20,13 @@ namespace GroupProject_Ecommerce.Scripts
             context.Session.Clear();
             context.Response.Redirect("Login.aspx");
         }
+        public static int GetCurrentUserId(HttpContext context)
+        {
+            if (context.Session["userId"] == null)
+            {
+                return -1;
+            }
+            return int.Parse(context.Session["userId"].ToString());
+        }
     }
 }
