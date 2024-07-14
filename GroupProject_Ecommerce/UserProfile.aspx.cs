@@ -101,19 +101,22 @@ namespace GroupProject_Ecommerce
             userId = 1;
             string sql = $@"
         SELECT 
-            t.TransactionID,
-            p.ProductName,
-            ISNULL(pi.ImageName, 'default.jpg') AS ImageName,  
-            t.Quantity,
-            t.TransactionDate
+              t.TransactionID,
+              p.ProductName,
+              ISNULL(pi.ImageName, 'default.jpg') AS ImageName,
+              t.Quantity,
+          t.TransactionDate
         FROM 
-            [dbo].[Transactions] t
+              [dbo].[Transactions] t
         JOIN 
-            [dbo].[Products] p ON t.ProductID = p.ProductID
-        LEFT JOIN 
-            [dbo].[ProductImages] pi ON p.ProductID = pi.ProductID
+              [dbo].[Products] p ON t.ProductID = p.ProductID
+        OUTER APPLY 
+           (SELECT TOP 1 pi.ImageName 
+               FROM [dbo].[ProductImages] pi 
+            WHERE pi.ProductID = p.ProductID) pi
         WHERE 
-            t.ShopID = {userId}";
+            t.UserID = {userId}";
+
 
             DataTable dt = dBContext.GetData(sql);
 

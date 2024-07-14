@@ -407,12 +407,12 @@
 
             <div id="my-purchase-section" class="content-section active">
           <h2>My Purchase</h2>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="width:1200px">
             <Columns>
             <asp:BoundField DataField="TransactionID" HeaderText="Mã giao dịch" />
             <asp:TemplateField HeaderText="Sản phẩm">
                 <ItemTemplate>
-                    <asp:Image ID="productImage" runat="server" ImageUrl='<%# Eval("ImageName", "~/Content/Images/ProductImages/{0}") %>' />
+                    <asp:Image ID="productImage" runat="server" ImageUrl='<%# Eval("ImageName", "~/Content/Images/ProductImages/{0}") %>' style="width:200px; height:200px;"/>
                     <br />
                     <asp:Label ID="ProductName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
                 </ItemTemplate>
