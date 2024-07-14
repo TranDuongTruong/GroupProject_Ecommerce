@@ -14,21 +14,23 @@
 
         <nav class="navbar">
             <div class="container">
-                
-                <div class="header" style="width:100%"> 
-                    <a class="navbar-brand" runat="server" href="~/" style="width:20%">E-Commerce</a>
-                    <ul class="navbar-nav"style="width:30%">
+
+                <div class="header" style="width: 100%">
+                    <a class="navbar-brand" runat="server" href="~/" style="width: 20%">E-Commerce</a>
+                    <ul class="navbar-nav" style="width: 30%">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">HOME</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">CONTACT</a></li>
-                    </ul >
-                    <div class="search-container"style="width:30%">
+                    </ul>
+                    <div class="search-container" style="width: 30%">
                         <asp:TextBox ID="SearchTextBox" CssClass="search-box" runat="server" placeholder="Search..."></asp:TextBox>
                         <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-outline-light" OnClick="SearchButton_Click" />
                     </div>
-                    <ul class="navbar-nav" style="width:20%">
+                    <ul class="navbar-nav" style="width: 20%">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Cart">Shopping Cart</a></li>
-                        <li id="LoginIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/LoginAndRegister">Login</a></li>
-                        <li id="LogoutIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Logout">Logout</a></li>
+                        <li id="LoginIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="Login.aspx">Login</a></li>
+                        <li id="LogoutIcon" runat="server" class="nav-item">
+                            <asp:LinkButton ID="LogoutButton" runat="server" CssClass="nav-link" OnClick="LogoutButton_Click">Logout</asp:LinkButton>
+                        </li>
                     </ul>
                 </div>
             </div>
