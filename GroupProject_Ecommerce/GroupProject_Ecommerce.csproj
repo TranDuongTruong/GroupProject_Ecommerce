@@ -89,7 +89,9 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="Cart.aspx" />
+    <Content Include="CheckOut.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\css\Cart-Checkout.css" />
     <Content Include="Content\css\SiteMaster.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -106,6 +108,13 @@
     </Compile>
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
