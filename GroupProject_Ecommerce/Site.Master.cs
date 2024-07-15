@@ -20,7 +20,7 @@ namespace GroupProject_Ecommerce
             {
                 LoginIcon.Visible = false;
                 LogoutIcon.Visible = true;
-
+                RegisterIcon.Visible = false;
             }
             else
             {
