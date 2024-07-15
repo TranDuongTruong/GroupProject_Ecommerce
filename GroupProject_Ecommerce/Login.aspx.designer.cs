@@ -15,15 +15,6 @@ namespace GroupProject_Ecommerce
     {
 
         /// <summary>
-        /// lblMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
-
-        /// <summary>
         /// lblUsername control.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace GroupProject_Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
+
+        /// <summary>
+        /// rfvUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUsername;
 
         /// <summary>
         /// lblPassword control.
@@ -60,6 +60,15 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
+        /// rfvPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPassword;
+
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>
@@ -67,5 +76,14 @@ namespace GroupProject_Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

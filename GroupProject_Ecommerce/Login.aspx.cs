@@ -25,18 +25,26 @@ namespace GroupProject_Ecommerce
 
         protected void btnLogin_Click1(object sender, EventArgs e)
         {
-            string user = txtUsername.Text;
-            string password = txtPassword.Text;
-
-            string sql = "select * from Users where Username= '"
-              + user + "' and Password = '" + password + "' ";
-            DataTable dt = kn.GetData(sql);
-            if (dt.Rows.Count > 0)
+            if (Page.IsValid)
             {
-                Session["username"] = user;
-                Session["userId"] = dt.Rows[0]["UserId"]; 
-                Response.Redirect("Default.aspx");
+                string user = txtUsername.Text;
+                string password = txtPassword.Text;
+
+                string sql = "select * from Users where Username= '"
+                  + user + "' and Password = '" + password + "' ";
+                DataTable dt = kn.GetData(sql);
+                if (dt.Rows.Count > 0)
+                {
+                    Session["username"] = user;
+                    Session["userId"] = dt.Rows[0]["UserId"];
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    lblMessage.Text = "Username or password is incorrect.";
+                }
             }
         }
     }
 }
+ 

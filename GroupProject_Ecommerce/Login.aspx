@@ -46,17 +46,21 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="login-container">
         <h2>Login</h2>
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
+        <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />--%>
         <div>
             <asp:Label ID="lblUsername" runat="server" Text="Username:"></asp:Label>
             <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Username is required." ForeColor="Red" Display="Dynamic" />
         </div>
         <div>
             <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ForeColor="Red" Display="Dynamic" />
         </div>
         <div>
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click1" />
         </div>
+          <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
+
     </div>
 </asp:Content>
