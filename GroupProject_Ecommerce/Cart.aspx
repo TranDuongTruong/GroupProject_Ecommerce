@@ -45,7 +45,7 @@
         </Columns>
     </asp:GridView>
 
-    <asp:LinkButton ID="Checkout" runat="server" CssClass="Checkout" OnClick="BuyButton_Click">Check Out</asp:LinkButton>
+    <asp:LinkButton ID="Checkout" runat="server" CssClass="Checkout" OnClick="BuyButton_Click" Visible="false">Check Out</asp:LinkButton>
 
     <asp:Label ID="Notify" runat="server" Text="" CssClass="Notify" />
 </asp:Content>

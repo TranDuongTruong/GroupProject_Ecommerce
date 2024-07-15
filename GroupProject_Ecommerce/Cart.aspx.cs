@@ -66,6 +66,7 @@ namespace GroupProject_Ecommerce
             {
                 CartItems.DataSource = dt;
                 CartItems.DataBind();
+                Checkout.Visible = true;
             }
             else
             {

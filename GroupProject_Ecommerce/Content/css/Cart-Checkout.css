@@ -89,4 +89,22 @@ h1 {
                 box-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
             }
 
+/* Cart-Checkout.css */
+.Checkout {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .Checkout:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
 
