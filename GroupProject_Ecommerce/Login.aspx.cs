@@ -34,7 +34,7 @@ namespace GroupProject_Ecommerce
             if (dt.Rows.Count > 0)
             {
                 Session["username"] = user;
-                Response.Redirect("Default.aspx");
+                Session["userId"] = dt.Rows[0]["UserId"]; 
             }
         }
     }
