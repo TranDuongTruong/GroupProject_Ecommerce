@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI;
 using GroupProject_Ecommerce.Scripts;
 
@@ -10,18 +11,28 @@ namespace GroupProject_Ecommerce
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack) return;
+            if (!IsPostBack)
+            {
+                LoadProductDetail();
+                LoadSimilarProducts();
+            }
+        }
 
-            string productId = "1"; // Trực tiếp sử dụng ProductID = 1 để test
+        private void LoadProductDetail()
+        {
+            string productId = "1"; // For testing, replace with actual logic to get productId
 
-            // Truy vấn chi tiết sản phẩm
-            string sql = $@"
+            // Query product details
+            string sql = @"
                 SELECT Products.*, ProductImages.ImageName 
                 FROM Products 
                 LEFT JOIN ProductImages ON Products.ProductID = ProductImages.ProductID 
-                WHERE Products.ProductID = {productId}";
+                WHERE Products.ProductID = @ProductId";
 
-            var productDetail = kn.GetData(sql);
+            var parameters = new System.Collections.Generic.Dictionary<string, object>();
+            parameters.Add("@ProductId", productId);
+
+            var productDetail = kn.GetDataWithParameters(sql, parameters);
             if (productDetail != null && productDetail.Rows.Count > 0)
             {
                 dl_productDetail.DataSource = productDetail;
@@ -29,23 +40,27 @@ namespace GroupProject_Ecommerce
             }
             else
             {
-                // Log or handle the case where no data is returned
-                Response.Write("Không có dữ liệu cho ProductID = 1");
+                // Handle case where no product detail found
+                Response.Write("Không có dữ liệu cho ProductID = " + productId);
             }
+        }
 
-            // Truy vấn các sản phẩm tương tự (ví dụ: chọn 4 sản phẩm ngẫu nhiên khác)
-<<<<<<< HEAD
-            string similarProductsSql = $@"
+        private void LoadSimilarProducts()
+        {
+            string productId = "1"; // For testing, replace with actual logic to get productId
+
+            // Query similar products
+            string similarProductsSql = @"
                 SELECT TOP 4 Products.*, ProductImages.ImageName 
-=======
-            string similarProductsSql = $@"SELECT TOP 4 Products.*, ProductImages.ImageName 
->>>>>>> 00b3d273786941346b8c5c2a06fc830c9cace4e6
                 FROM Products 
                 LEFT JOIN ProductImages ON Products.ProductID = ProductImages.ProductID 
-                WHERE Products.ProductID != {productId}
-                ORDER BY NEWID()"; // Lấy ngẫu nhiên 4 sản phẩm khác
+                WHERE Products.ProductID != @ProductId
+                ORDER BY NEWID()"; // Get random 4 different products
 
-            var similarProducts = kn.GetData(similarProductsSql);
+            var parameters = new System.Collections.Generic.Dictionary<string, object>();
+            parameters.Add("@ProductId", productId);
+
+            var similarProducts = kn.GetDataWithParameters(similarProductsSql, parameters);
             if (similarProducts != null && similarProducts.Rows.Count > 0)
             {
                 dl_similarProducts.DataSource = similarProducts;
@@ -53,8 +68,8 @@ namespace GroupProject_Ecommerce
             }
             else
             {
-                // Log or handle the case where no data is returned
-                Response.Write("Không có dữ liệu cho các sản phẩm tương tự");
+                // Handle case where no similar products found
+                Response.Write("Không có dữ liệu cho các sản phẩm tương tự với ProductID = " + productId);
             }
         }
     }
