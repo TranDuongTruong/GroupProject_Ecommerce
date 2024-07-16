@@ -21,11 +21,16 @@ namespace GroupProject_Ecommerce
                 LoginIcon.Visible = false;
                 LogoutIcon.Visible = true;
                 RegisterIcon.Visible = false;
+                UserProfileIcon.Visible = true;
+                CartIcon.Visible = true;
             }
             else
             {
                 LoginIcon.Visible = true;
                 LogoutIcon.Visible = false;
+                RegisterIcon.Visible = true;
+                UserProfileIcon.Visible = false;
+                CartIcon.Visible = false;
             }
         }
 

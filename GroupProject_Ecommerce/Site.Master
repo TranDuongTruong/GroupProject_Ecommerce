@@ -26,13 +26,26 @@
                         <asp:Button ID="SearchButton" runat="server" Text="Search" CssClass="btn btn-outline-light" OnClick="SearchButton_Click" />
                     </div>
                     <ul class="navbar-nav" style="width: 20%">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Cart">Shopping Cart</a></li>
-                        <li id="LoginIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="Login.aspx">Login</a></li>
-                         <li id="RegisterIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="Register.aspx">Register</a></li>
+                        <li id="CartIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Cart">
+                            <img src="/Content/Images/Icon/shopping-cart.png" style="width:40px; height:40px;"/>
+                                             </a></li>
+
+                        <li id="LoginIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="Login.aspx">
+                            <asp:Image ID="Image3" runat="server" src="/Content/Images/Icon/login.png" style="width:40px; height:40px;"/>
+                                                                           </a></li>
+                         <li id="RegisterIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="Register.aspx">
+                             <asp:Image ID="Image2" runat="server" src="/Content/Images/Icon/register.png" style="width:40px; height:40px;"/>
+                                                                               </a></li>
+                         <li id="UserProfileIcon" runat="server" class="nav-item"><a class="nav-link" runat="server" href="UserProfile.aspx">
+                             <asp:Image ID="Image1" runat="server" src="/Content/Images/Icon/account.png" style="width:40px; height:40px;"/>     
+                           </a></li>
 
                         <li id="LogoutIcon" runat="server" class="nav-item">
-                            <asp:LinkButton ID="LogoutButton" runat="server" CssClass="nav-link" OnClick="LogoutButton_Click">Logout</asp:LinkButton>
+                            <asp:LinkButton ID="LogoutButton" runat="server" CssClass="nav-link" OnClick="LogoutButton_Click">
+                                 <asp:Image ID="Image4" runat="server" src="/Content/Images/Icon/logout.png" style="width:40px; height:40px;"/>
+                            </asp:LinkButton>
                         </li>
+
                     </ul>
                 </div>
             </div>
