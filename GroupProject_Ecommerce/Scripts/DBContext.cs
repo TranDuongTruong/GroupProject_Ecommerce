@@ -13,13 +13,13 @@ namespace GroupProject_Ecommerce.Scripts
         SqlConnection cn;
 
         // Constructor to initialize the connection string
-    
+
 
         // Method to open the database connection
         private void OpenConnection()
         {
-         //   string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\GroupProject_Ecommerce\GroupProject_Ecommerce\App_Data\Database.mdf;Integrated Security=True";
-             string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            //   string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\C#\GroupProject_Ecommerce\GroupProject_Ecommerce\App_Data\Database.mdf;Integrated Security=True";
+            string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
             cn = new SqlConnection(connectionString);
             cn.Open();
         }
@@ -89,6 +89,31 @@ namespace GroupProject_Ecommerce.Scripts
             }
             return result;
         }
+        public DataTable GetDataWithParameters(string sql, Dictionary<string, object> parameters)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                foreach (var param in parameters)
+                {
+                    cmd.Parameters.AddWithValue(param.Key, param.Value);
+                }
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                dt = null;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return dt;
+        }
+
 
         // Method to execute a scalar command (e.g., getting a single value)
         public object ExecuteScalar(string sql)

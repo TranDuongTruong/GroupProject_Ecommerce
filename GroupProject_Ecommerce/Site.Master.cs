@@ -20,7 +20,7 @@ namespace GroupProject_Ecommerce
             {
                 LoginIcon.Visible = false;
                 LogoutIcon.Visible = true;
-
+                RegisterIcon.Visible = false;
             }
             else
             {
@@ -36,5 +36,11 @@ namespace GroupProject_Ecommerce
             Response.Redirect("Default.aspx?key=" + keyword);
 
         }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
     }
-}
+}   

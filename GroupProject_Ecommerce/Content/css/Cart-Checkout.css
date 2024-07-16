@@ -1,0 +1,110 @@
+﻿/* General styles for the cart page */
+h1 {
+    color: #B22222; /* Red color for the primary theme */
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Notification label */
+.Notify {
+    display: block;
+    margin-top: 20px;
+    color: #B22222; /* Red color for notifications */
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    text-align: left;
+}
+
+    .gridview th {
+        background-color: #B22222; /* Red color for the header */
+        color: white;
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .gridview td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .gridview .gridview-header {
+        background-color: #B22222; /* Red color for header cells */
+        color: white;
+    }
+
+    .gridview .gridview-row {
+        background-color: #f9f9f9;
+    }
+
+    /* Styles for the image column */
+    .gridview img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    /* Styles for quantity buttons and text box */
+    .gridview .quantity-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .gridview .quantity-controls button {
+            background-color: #B22222; /* Red color for buttons */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+            .gridview .quantity-controls button:hover {
+                background-color: #a12020; /* Darker red on hover */
+            }
+
+        .gridview .quantity-controls input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 1em;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+            .gridview .quantity-controls input:focus {
+                outline: none;
+                border-color: #B22222;
+                box-shadow: 0 0 5px rgba(178, 34, 34, 0.5);
+            }
+
+/* Cart-Checkout.css */
+.Checkout {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .Checkout:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+

@@ -51,6 +51,15 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LoginIcon;
 
         /// <summary>
+        /// RegisterIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RegisterIcon;
+
+        /// <summary>
         /// LogoutIcon control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace GroupProject_Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LogoutIcon;
+
+        /// <summary>
+        /// LogoutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LogoutButton;
 
         /// <summary>
         /// MainContent control.
