@@ -34,8 +34,12 @@ namespace GroupProject_Ecommerce
             }
 
             // Truy vấn các sản phẩm tương tự (ví dụ: chọn 4 sản phẩm ngẫu nhiên khác)
+<<<<<<< HEAD
             string similarProductsSql = $@"
                 SELECT TOP 4 Products.*, ProductImages.ImageName 
+=======
+            string similarProductsSql = $@"SELECT TOP 4 Products.*, ProductImages.ImageName 
+>>>>>>> 00b3d273786941346b8c5c2a06fc830c9cace4e6
                 FROM Products 
                 LEFT JOIN ProductImages ON Products.ProductID = ProductImages.ProductID 
                 WHERE Products.ProductID != {productId}

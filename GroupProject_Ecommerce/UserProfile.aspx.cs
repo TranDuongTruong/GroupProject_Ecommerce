@@ -22,6 +22,14 @@ namespace GroupProject_Ecommerce
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
+
+            if (!UserContext.CheckLoginStatus(HttpContext.Current))
+            {
+                Response.Redirect("Login.aspx");
+            }
+          
+
+
             //  if (!UserContext.CheckLoginStatus(HttpContext.Current)) return;
             int userId = UserContext.GetCurrentUserId(HttpContext.Current);
             userId = 1;

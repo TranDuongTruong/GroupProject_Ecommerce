@@ -84,8 +84,12 @@
                     </td>
                 </tr>
                 <tr>
+<<<<<<< HEAD
                     <td>
                         Giá: <asp:Label ID="Label3" runat="server" Text='<%# Eval("Price", "{0:C}") %>'></asp:Label>
+=======
+                    <td>Giá: <asp:Label ID="Label3" runat="server" Text='<%# Eval("Price", "{0:C}") %>'></asp:Label>
+>>>>>>> 00b3d273786941346b8c5c2a06fc830c9cace4e6
                     </td>
                 </tr>
                 <tr>
@@ -119,4 +123,8 @@
             </ItemTemplate>
         </asp:DataList>
     </div>
+<<<<<<< HEAD
 </asp:Content>
+=======
+</asp:Content>
+>>>>>>> 00b3d273786941346b8c5c2a06fc830c9cace4e6
