@@ -1,99 +1,102 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="GroupProject_Ecommerce.Contact" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        /* CSS styles for Contact page */
-        .profile-container {
-            max-width: 600px;
+        .contact-form-container {
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .profile-container h4 {
-            margin-bottom: 10px;
-            font-size: 24px;
-            color: #333;
-        }
-        .profile-container .profile-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            align-items: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-group {
             margin-bottom: 15px;
         }
-        .profile-container .profile-item .profile-label {
-            width: 100px;
-            font-weight: bold;
-            color: #555;
+
+        .contact-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
         }
-        .profile-container .profile-item .profile-input {
-            flex: 1;
-            padding: 8px;
-            font-size: 14px;
+
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border-radius: 5px;
         }
-        .profile-container .profile-item .profile-image {
-            flex: 1;
-            text-align: right;
+
+        .contact-form .form-group textarea {
+            resize: vertical;
+            height: 150px;
         }
-        .profile-container .profile-item .profile-image img {
-            max-width: 100px;
-            max-height: 100px;
-            border-radius: 50%;
+
+        .contact-form .form-group .error-message {
+            color: red;
         }
-        /* Customize further as needed */
+
+        .contact-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </asp:Content>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="profile-container">
-        <h4>Thông tin cá nhân của tôi</h4>
-        <asp:DataList ID="dl_contact" runat="server">
-            <ItemTemplate>
-                <div class="profile-item">
-                    <div class="profile-label">
-                        <asp:Label ID="Label1" runat="server" Text="Tên đăng nhập:"></asp:Label>
-                    </div>
-                    <div class="profile-input">
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Username") %>' CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="profile-image">
-                        <asp:Image ID="ProfileImage" runat="server" ImageUrl='<%# Eval("Avatar") %>' AlternateText="Avatar" />
-                    </div>
-                </div>
-                <div class="profile-item">
-                    <div class="profile-label">
-                        <asp:Label ID="Label2" runat="server" Text="Mật khẩu:"></asp:Label>
-                    </div>
-                    <div class="profile-input">
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Eval("Password") %>' CssClass="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="profile-item">
-                    <div class="profile-label">
-                        <asp:Label ID="Label3" runat="server" Text="Email:"></asp:Label>
-                    </div>
-                    <div class="profile-input">
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Email") %>' CssClass="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="profile-item">
-                    <div class="profile-label">
-                        <asp:Label ID="Label4" runat="server" Text="Địa chỉ:"></asp:Label>
-                    </div>
-                    <div class="profile-input">
-                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Eval("Address") %>' CssClass="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="profile-item">
-                    <div class="profile-label">
-                        <asp:Label ID="Label5" runat="server" Text="Số điện thoại:"></asp:Label>
-                    </div>
-                    <div class="profile-input">
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Eval("PhoneNumber") %>' CssClass="form-control"></asp:TextBox>
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:DataList>
+    <div class="contact-form-container">
+        <div class="contact-info">
+            <h2>Gửi liên hệ tới AppMvc</h2>
+            <p>Chúng tôi luôn lắng nghe các ý kiến của bạn!</p>
+        </div>
+        <div class="contact-form">
+            <h2>Liên hệ với chúng tôi</h2>
+            <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
+            <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Họ Tên"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvFullName" runat="server" ControlToValidate="txtFullName" ErrorMessage="Phải nhập Họ Tên" ForeColor="Red" CssClass="error-message"></asp:RequiredFieldValidator>
+
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Địa chỉ email"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Phải nhập Địa chỉ email" ForeColor="Red" CssClass="error-message"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ" ValidationExpression="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" ForeColor="Red" CssClass="error-message"></asp:RegularExpressionValidator>
+
+            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Số điện thoại"></asp:TextBox>
+            
+            <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" CssClass="form-control" placeholder="Nội dung"></asp:TextBox>
+
+            <asp:Button ID="btnSubmit" runat="server" Text="Gửi liên hệ" OnClick="btnSubmit_Click" CssClass="btn btn-primary" />
+        </div>
     </div>
 </asp:Content>
