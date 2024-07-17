@@ -119,7 +119,7 @@
         <asp:DataList ID="dl_similarProducts" runat="server" RepeatColumns="4">
             <ItemTemplate>
                 <div class="product-item">
-                    <asp:Image ID="SimilarImage" runat="server" ImageUrl='<%# "Content/Images/ProductImages/" + Eval("ImageName") %>' />
+                    <asp:Image ID="SimilarImage" runat="server" ImageUrl='<%# "Content/Images/ProductImages/" + Eval("Image") %>' />
                     <asp:Label ID="SimilarProductName" runat="server" Text='<%# Eval("ProductName") %>' CssClass="product-name"></asp:Label><br />
                     Giá: <asp:Label ID="SimilarProductPrice" runat="server" Text='<%# Eval("Price", "{0:C}") %>' CssClass="product-price"></asp:Label>
                 </div>

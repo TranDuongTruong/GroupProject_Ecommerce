@@ -189,5 +189,9 @@ namespace GroupProject_Ecommerce.Scripts
 
             return obj;
         }
+        public void SeedData()
+        {
+
+        }
     }
 }

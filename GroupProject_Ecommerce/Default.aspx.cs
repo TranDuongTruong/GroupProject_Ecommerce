@@ -60,6 +60,20 @@ namespace GroupProject_Ecommerce
                 parameters.Add("@CategoryId", SelectedCategoryId.Value);
             }
 
+            string searchKey = Request.QueryString["key"];
+            if (!string.IsNullOrEmpty(searchKey))
+            {
+                if (parameters.Count > 0)
+                {
+                    sql += " AND (ProductName LIKE @SearchKey OR Description LIKE @SearchKey)";
+                }
+                else
+                {
+                    sql += " WHERE ProductName LIKE @SearchKey OR Description LIKE @SearchKey";
+                }
+                parameters.Add("@SearchKey", "%" + searchKey + "%");
+            }
+
             DataTable dt = db.GetDataWithParameters(sql, parameters);
             if (dt != null)
             {
@@ -77,6 +91,7 @@ namespace GroupProject_Ecommerce
                 lnkNext.Enabled = CurrentPage < totalPages;
             }
         }
+
 
         protected void Page_Command(object sender, CommandEventArgs e)
         {
@@ -107,7 +122,7 @@ namespace GroupProject_Ecommerce
         protected void ImageButton1_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             string productId = ((ImageButton)sender).CommandArgument;
-            Response.Redirect("Chitiet.aspx?productId=" + productId);
+            Response.Redirect("ProductDetail.aspx?productId=" + productId);
         }
     }
 }

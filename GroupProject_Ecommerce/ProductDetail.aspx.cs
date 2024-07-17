@@ -58,7 +58,7 @@ namespace GroupProject_Ecommerce
             DataTable dtThumbnails = kn.GetDataWithParameters(sqlThumbnails, parametersImages);
 
             // Lấy danh sách sản phẩm tương tự từ cùng một cửa hàng
-            string sqlSimilarProducts = "SELECT TOP 8 ProductName, Price FROM Products WHERE ShopID = @ShopID AND ProductID <> @ProductID ORDER BY NEWID()";
+            string sqlSimilarProducts = "SELECT TOP 8 ProductName,Image, Price FROM Products WHERE ShopID = @ShopID AND ProductID <> @ProductID ORDER BY NEWID()";
             var parametersSimilar = new Dictionary<string, object>
     {
         { "@ShopID", shopIdToTest },
