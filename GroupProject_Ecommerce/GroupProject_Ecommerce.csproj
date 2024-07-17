@@ -93,6 +93,7 @@
     <Content Include="Contact.aspx" />
     <Content Include="Content\css\Cart-Checkout.css" />
     <Content Include="Content\css\SiteMaster.css" />
+    <Content Include="Content\Images\Icon\star.png" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -204,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\AvatarOfUser\" />
-    <Folder Include="Content\Images\Icon\" />
     <Folder Include="Content\Images\ProductImages\" />
     <Folder Include="Models\" />
   </ItemGroup>
