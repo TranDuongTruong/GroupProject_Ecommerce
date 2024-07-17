@@ -18,8 +18,8 @@ namespace GroupProject_Ecommerce.Scripts
         // Method to open the database connection
         private void OpenConnection()
         {
-               string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\admin\OneDrive\Tài liệu\hoangquyen\GroupProject_Ecommerce\GroupProject_Ecommerce\Scripts\DBContext.cs;Integrated Security=True";
-            //string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+             //  string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\admin\OneDrive\Tài liệu\hoangquyen\GroupProject_Ecommerce\GroupProject_Ecommerce\Scripts\DBContext.cs;Integrated Security=True";
+            string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
             cn = new SqlConnection(connectionString);
             cn.Open();
         }

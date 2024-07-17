@@ -20,7 +20,7 @@ namespace GroupProject_Ecommerce
 
         private void LoadProductDetail()
         {
-            string productId = "1"; // For testing, replace with actual logic to get productId
+            int productId = 1; // For testing, replace with actual logic to get productId
 
             // Query product details
             string sql = @"
