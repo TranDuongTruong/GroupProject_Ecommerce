@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Reflection;
 
 namespace GroupProject_Ecommerce.Scripts
@@ -12,21 +10,20 @@ namespace GroupProject_Ecommerce.Scripts
     {
         SqlConnection cn;
 
-        // Constructor to initialize the connection string
-
-
         // Method to open the database connection
         private void OpenConnection()
         {
-             //  string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\admin\OneDrive\Tài liệu\hoangquyen\GroupProject_Ecommerce\GroupProject_Ecommerce\Scripts\DBContext.cs;Integrated Security=True";
+
             string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
             cn = new SqlConnection(connectionString);
             cn.Open();
         }
+
         private void CloseConnection()
         {
             cn.Close();
         }
+
         public DataTable GetData(string sql)
         {
             DataTable dt = new DataTable();
@@ -46,6 +43,7 @@ namespace GroupProject_Ecommerce.Scripts
             }
             return dt;
         }
+
         public int Update(string sql)
         {
             int result = 0;
@@ -54,12 +52,10 @@ namespace GroupProject_Ecommerce.Scripts
                 OpenConnection();
                 SqlCommand cmd = new SqlCommand(sql, cn);
                 result = cmd.ExecuteNonQuery();
-
             }
             catch
             {
                 result = 0;
-
             }
             finally
             {
@@ -89,6 +85,29 @@ namespace GroupProject_Ecommerce.Scripts
             }
             return result;
         }
+
+        // Modified method to execute an update/insert/delete command with parameters
+        public int ExecuteCommand(SqlCommand cmd)
+        {
+            int result = 0;
+            try
+            {
+                OpenConnection();
+                cmd.Connection = cn;
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (optional)
+                result = 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return result;
+        }
+
         public DataTable GetDataWithParameters(string sql, Dictionary<string, object> parameters)
         {
             DataTable dt = new DataTable();
@@ -114,7 +133,6 @@ namespace GroupProject_Ecommerce.Scripts
             return dt;
         }
 
-
         // Method to execute a scalar command (e.g., getting a single value)
         public object ExecuteScalar(string sql)
         {
@@ -136,7 +154,6 @@ namespace GroupProject_Ecommerce.Scripts
             }
             return result;
         }
-
 
         public T GetObjectByQuery<T>(string sql) where T : new()
         {
