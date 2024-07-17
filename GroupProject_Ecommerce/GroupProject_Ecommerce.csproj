@@ -206,6 +206,7 @@
   <ItemGroup>
     <Folder Include="Content\Images\AvatarOfUser\" />
     <Folder Include="Content\Images\ProductImages\" />
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
