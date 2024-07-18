@@ -113,7 +113,7 @@
             <ItemTemplate>
                 <div class="product-item">
                     <h3><%# Eval("ProductName") %></h3>
-                   <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%# Eval("ProductID")  %>' OnClick="ImageButton1_Click" ImageUrl='<%# "images/"+Eval("Image") %>' alt='<%# Eval("ProductName") %>' style="height: 200px;" />
+                   <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%# Eval("ProductID")  %>' OnClick="ImageButton1_Click" ImageUrl='<%# "Content/Images/ProductImages/"+Eval("Image")+".jpg" %>' alt='<%# Eval("ProductName") %>' style="height: 200px;" />
 
                     <p><%# Eval("Description") %></p>
                     <p class="price">Price: <%# Eval("Price", "{0:C}") %></p>

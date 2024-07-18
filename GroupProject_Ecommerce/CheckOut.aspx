@@ -8,7 +8,7 @@
     <Columns>
         <asp:TemplateField HeaderText="Image">
             <ItemTemplate>
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%# "Content/Images/ProductImages/" + Eval("ImageName") %>' />
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%# "Content/Images/ProductImages/" + Eval("ImageName")+".jpg" %>' />
             </ItemTemplate>
         </asp:TemplateField>
         <asp:BoundField DataField="ProductName" HeaderText="Product Name" ItemStyle-CssClass="gridview-row">

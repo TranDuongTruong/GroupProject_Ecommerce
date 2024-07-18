@@ -251,6 +251,65 @@
             color: blue;
             text-decoration: underline;
         }
+        .form-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 600px;
+}
+
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    width: 100px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.validation-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.form-button {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
     </style>
     <script>
       
@@ -260,7 +319,17 @@
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
+            localStorage.setItem('activeSection', sectionId);
+
         }
+        window.onload = function () {
+            var activeSection = localStorage.getItem('activeSection');
+            if (activeSection) {
+                showSection(activeSection);
+            } else {
+                showSection('my-purchase'); // Set the default section if no active section is stored
+            }
+        };
         function showFileDialog() {
             document.getElementById('<%= fileUpload.ClientID %>').click();
 
@@ -269,13 +338,44 @@
             document.getElementById('<%= btnUpload.ClientID %>').click();
          
         }
-        function showChangePasswordModal() {
-            document.getElementById('changePasswordModal').style.display = 'block';
+
+        function validateForm() {
+            var currentPassword = document.getElementById('<%= txtCurrentPassword.ClientID %>').value;
+           var newPassword = document.getElementById('<%= txtNewPassword.ClientID %>').value;
+           var confirmPassword = document.getElementById('<%= txtConfirmPassword.ClientID %>').value;
+        var errorLabel = document.getElementById('<%= validateError.ClientID %>');
+
+        // Clear previous error message
+        errorLabel.innerText = "";
+
+        if (currentPassword === "") {
+            errorLabel.innerText = "Current password is required.";
+            return false;
         }
 
-        function closeChangePasswordModal() {
-            document.getElementById('changePasswordModal').style.display = 'none';
+        if (newPassword === "") {
+            errorLabel.innerText = "New password is required.";
+            return false;
         }
+
+        if (newPassword.length < 5) {
+            errorLabel.innerText = "New password must be at least 5 characters long.";
+            return false;
+        }
+
+        if (confirmPassword === "") {
+            errorLabel.innerText = "Confirm password is required.";
+            return false;
+        }
+
+        if (newPassword !== confirmPassword) {
+            errorLabel.innerText = "Passwords do not match.";
+            return false;
+        }
+
+           __doPostBack('<%= btnSubmitPasswordChange.UniqueID %>', '');
+           return false;
+       }
 
     </script>
 </asp:Content>
@@ -351,56 +451,39 @@
     </div>
 
                 <br />
-                <asp:Button ID="btnSaveProfile" runat="server" Text="Save" onClick="btnSaveProfile_Click"/>
+                <asp:Button ID="btnSaveProfile" runat="server" Text="Save" CssClass="btn-primary form-button" onClick="btnSaveProfile_Click"/>
             </div>
 
-            <div id="my-account-section" class="content-section">
+
+
+
+           <div id="my-account-section" class="content-section">
                 <h2>My Account</h2>
-                <p>Email: <asp:Label ID="lblEmail" runat="server" Text="user@example.com"></asp:Label></p>
-                <p>Password:  <asp:Label ID="txtPassword" runat="server" Text="Label"></asp:Label></p>
-                <a ID="btnChangePassword"  OnClick=" showChangePasswordModal()" >Change Password</a>
-
-
+               <h6 class="form-title">Change Password</h6>
+<div class="form-group">
+    <asp:Label ID="lblCurrentPassword" runat="server" Text="Current Password" CssClass="form-label"></asp:Label>
+    <asp:TextBox ID="txtCurrentPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+    <br /><br />
+</div>
+<div class="form-group">
+    <asp:Label ID="lblNewPassword" runat="server" Text="New Password" CssClass="form-label"></asp:Label>
+    <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+    <br /><br />
+</div>
+<div class="form-group">
+    <asp:Label ID="lblConfirmPassword" runat="server" Text="Confirm Password" CssClass="form-label"></asp:Label>
+    <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+    <br /><br />
+</div>
+               <asp:Label ID="validateError" runat="server" Text=""></asp:Label>
+<br /><br />
+<asp:Button ID="btnSubmitPasswordChange" runat="server" Text="Save" CssClass="btn-primary form-button" OnClick="btnSubmitPasswordChange_Click" OnClientClick="return validateForm();" />
 
 
             </div>
+
             
-                    <!-- Change Password Modal -->
-        <!-- Change Password Modal -->
-            <div id="changePasswordModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Change Password</h5>
-                    <span class="close" onclick="closeChangePasswordModal()">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="currentPassword">Current Password</label>
-                        <asp:TextBox ID="txtCurrentPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
-                          <br />
-                        <asp:RequiredFieldValidator ID="rfvCurrentPassword" runat="server" ControlToValidate="txtCurrentPassword" ErrorMessage="Current password is required." CssClass="validation-error" Display="Dynamic" />
-                    </div>
-                    <div class="form-group">
-                        <label for="newPassword">New Password</label>
-                        <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvNewPassword" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="New password is required." CssClass="validation-error" Display="Dynamic" />
-                       <br />
-                        <asp:RegularExpressionValidator ID="revNewPassword" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="Password must be at least 5 characters long." CssClass="validation-error" Display="Dynamic" ValidationExpression="^.{5,}$" />
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
-                           <br />
-                        <asp:RequiredFieldValidator ID="rfvConfirmPassword" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="Confirm password is required." CssClass="validation-error" Display="Dynamic" />
-                        <asp:CompareValidator ID="cvPasswords" runat="server" ControlToCompare="txtNewPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Passwords do not match." CssClass="validation-error" Display="Dynamic" />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnSubmitPasswordChange" runat="server" Text="Submit" CssClass="btn-primary" OnClick="btnSubmitPasswordChange_Click" />
-                    <button type="button" class="btn-secondary" onclick="closeChangePasswordModal()">Close</button>
-                </div>
-            </div>
-        </div>
+           
 
 
 
@@ -409,16 +492,27 @@
           <h2>My Purchase</h2>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="width:1200px">
             <Columns>
-            <asp:BoundField DataField="TransactionID" HeaderText="Mã giao dịch" />
-            <asp:TemplateField HeaderText="Sản phẩm">
+            <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" >
+                <FooterStyle BackColor="Red" ForeColor="White" />
+                <HeaderStyle BackColor="Red" ForeColor="White" />
+                </asp:BoundField>
+            <asp:TemplateField HeaderText="Product">
                 <ItemTemplate>
-                    <asp:Image ID="productImage" runat="server" ImageUrl='<%# Eval("ImageName", "~/Content/Images/ProductImages/{0}") %>' style="width:200px; height:200px;"/>
+                    <asp:Image ID="productImage" runat="server" ImageUrl='<%# Eval("ImageName", "~/Content/Images/ProductImages/{0}"+".jpg") %>' style="width:200px; height:200px;"/>
                     <br />
                     <asp:Label ID="ProductName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
                 </ItemTemplate>
+                <HeaderStyle BackColor="Red" ForeColor="White" />
             </asp:TemplateField>
-            <asp:BoundField DataField="Quantity" HeaderText="Số lượng" />
-            <asp:BoundField DataField="TransactionDate" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Ngày mua" />
+            <asp:BoundField DataField="Quantity" HeaderText="Quantity" >
+                <HeaderStyle BackColor="Red" ForeColor="White" />
+                </asp:BoundField>
+            <asp:BoundField DataField="TransactionDate" DataFormatString="{0:dd/MM/yyyy}" HeaderText="Date" >
+                <HeaderStyle BackColor="Red" ForeColor="White" />
+                </asp:BoundField>
+             <asp:BoundField DataField="Price" HeaderText="Price" >
+                <HeaderStyle BackColor="Red" ForeColor="White" />
+                </asp:BoundField>
         </Columns>
     </asp:GridView>
 </div>

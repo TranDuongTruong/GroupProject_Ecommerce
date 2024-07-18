@@ -75,7 +75,8 @@ namespace GroupProject_Ecommerce
             }
 
             DataTable dt = db.GetDataWithParameters(sql, parameters);
-            if (dt != null)
+            
+            if (dt != null&& dt.Rows.Count > 0)
             {
                 // Calculate pagination
                 int totalRecords = dt.Rows.Count;

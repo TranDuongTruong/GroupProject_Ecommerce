@@ -24,15 +24,6 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.DataList dl_productDetail;
 
         /// <summary>
-        /// dl_similarProducts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dl_similarProducts;
-
-        /// <summary>
         /// lblNoSimilarProducts control.
         /// </summary>
         /// <remarks>
@@ -40,5 +31,14 @@ namespace GroupProject_Ecommerce
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNoSimilarProducts;
+
+        /// <summary>
+        /// dl_similarProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList dl_similarProducts;
     }
 }

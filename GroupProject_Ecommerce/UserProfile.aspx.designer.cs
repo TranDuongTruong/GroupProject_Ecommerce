@@ -195,22 +195,13 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.Button btnSaveProfile;
 
         /// <summary>
-        /// lblEmail control.
+        /// lblCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
-
-        /// <summary>
-        /// txtPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtPassword;
+        protected global::System.Web.UI.WebControls.Label lblCurrentPassword;
 
         /// <summary>
         /// txtCurrentPassword control.
@@ -222,13 +213,13 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
 
         /// <summary>
-        /// rfvCurrentPassword control.
+        /// lblNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurrentPassword;
+        protected global::System.Web.UI.WebControls.Label lblNewPassword;
 
         /// <summary>
         /// txtNewPassword control.
@@ -240,22 +231,13 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
 
         /// <summary>
-        /// rfvNewPassword control.
+        /// lblConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNewPassword;
-
-        /// <summary>
-        /// revNewPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revNewPassword;
+        protected global::System.Web.UI.WebControls.Label lblConfirmPassword;
 
         /// <summary>
         /// txtConfirmPassword control.
@@ -267,22 +249,13 @@ namespace GroupProject_Ecommerce
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
 
         /// <summary>
-        /// rfvConfirmPassword control.
+        /// validateError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfirmPassword;
-
-        /// <summary>
-        /// cvPasswords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cvPasswords;
+        protected global::System.Web.UI.WebControls.Label validateError;
 
         /// <summary>
         /// btnSubmitPasswordChange control.

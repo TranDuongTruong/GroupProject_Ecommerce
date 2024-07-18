@@ -189,9 +189,30 @@ namespace GroupProject_Ecommerce.Scripts
 
             return obj;
         }
-        public void SeedData()
+        public int ExecuteCommandWithParameters(string sql, Dictionary<string, object> parameters)
         {
-
+            int result = 0;
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                foreach (var param in parameters)
+                {
+                    cmd.Parameters.AddWithValue(param.Key, param.Value);
+                }
+                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (optional)
+                Console.WriteLine(ex.Message);
+                result = 0;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return result;
         }
     }
 }
